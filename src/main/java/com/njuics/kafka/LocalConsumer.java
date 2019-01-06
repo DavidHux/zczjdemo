@@ -2,7 +2,7 @@ package com.njuics.kafka;
 
 import java.util.*;
 import org.apache.kafka.clients.consumer.*;
-// import java.time.Duration;
+import java.time.Duration;
 
 public class LocalConsumer {
     public static void main(String[] args) {
@@ -16,13 +16,14 @@ public class LocalConsumer {
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
         consumer.subscribe(Arrays.asList("topic1", "global22"));
-        while (true) {
+        long t = new Date().getTime();
+        while (new Date().getTime() < t + 60 * 1000) {
             // System.out.printf("fsdf\n");
-            
-            ConsumerRecords<String, String> records = consumer.poll(100);
+            Duration d = Duration.ofMillis(100);
+            ConsumerRecords<String, String> records = consumer.poll(d);
             for (ConsumerRecord<String, String> record : records)
                 System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
         }
-        // consumer.close();
+        consumer.close();
     }
 }

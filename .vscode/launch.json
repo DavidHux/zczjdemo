@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Kafka2Hive",
+            "request": "launch",
+            "mainClass": "com.njuics.Kafka2Hive",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - HiveJdbcClient",
             "request": "launch",
             "mainClass": "com.njuics.hive.HiveJdbcClient",
