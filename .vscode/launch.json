@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HiveJdbcClient",
+            "request": "launch",
+            "mainClass": "com.njuics.hive.HiveJdbcClient",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LocalConsumer",
+            "request": "launch",
+            "mainClass": "com.njuics.kafka.LocalConsumer",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestTopics",
+            "request": "launch",
+            "mainClass": "com.njuics.kafka.TestTopics",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Check2Kafka",
+            "request": "launch",
+            "mainClass": "com.njuics.Check2Kafka",
+            "projectName": "netsys",
+            "args": [
+                "data/aaa.txt"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "com.njuics.App",
+            "projectName": "netsys"
+        }
+    ]
+}

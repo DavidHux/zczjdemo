@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "netsys",
+                "projectName": "netsys",
+                "workingDirectory": "/Users/davidhu/java_in_vsc/netsys",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "netsys",
+                "projectName": "netsys",
+                "workingDirectory": "/Users/davidhu/java_in_vsc/netsys",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
