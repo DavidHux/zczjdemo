@@ -26,6 +26,7 @@ public class HiveJdbcClient {
             System.exit(1);
         }
     }
+
     public void execute(String cmd) throws SQLException {
         stmt.execute(cmd);
     }
@@ -34,8 +35,13 @@ public class HiveJdbcClient {
         return stmt.executeQuery(sql);
     }
 
-    public void close() throws SQLException {
-        stmt.close();
+    public void close() {
+        try {
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println("close jdbc client error");
+            e.printStackTrace();
+        }
     }
 
     /**

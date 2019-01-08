@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Neo4jJdbcTest",
+            "request": "launch",
+            "mainClass": "com.njuics.neo4j.Neo4jJdbcTest",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Neo4jTest",
+            "request": "launch",
+            "mainClass": "com.njuics.neo4j.Neo4jTest",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SelectFromHive",
+            "request": "launch",
+            "mainClass": "com.njuics.SelectFromHive",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Kafka2Hive",
             "request": "launch",
             "mainClass": "com.njuics.Kafka2Hive",
