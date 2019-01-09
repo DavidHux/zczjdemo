@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hadoop-spark-master-rep
+  namespace: pvc-test
+spec:
+  selector:
+    app: hadoop-spark-master
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 10000
+    targetPort: 10000
