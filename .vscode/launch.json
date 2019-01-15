@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Select1",
+            "request": "launch",
+            "mainClass": "com.njuics.preprocess.Select1",
+            "projectName": "netsys"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Neo4jJdbcTest",
             "request": "launch",
             "mainClass": "com.njuics.neo4j.Neo4jJdbcTest",

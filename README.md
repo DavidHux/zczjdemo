@@ -22,7 +22,7 @@ hive部署在王同学的Hadoop-spark on k8s环境中，使用jdbc连接需要�
 </property>
 ```
 
-之后重启集群，可能需要强制`kill -9 <p>`杀掉jps进程才能重启。
+之后重启集群，可能需要强制`kill -9 <p>`杀掉jps进程才能重启。
 
 外部访问需要暴露10000端口，可以自行配置一个service将pod的端口暴露在物理机上，或者使用`kubectl forward`等。
 
@@ -36,18 +36,26 @@ hive部署在王同学的Hadoop-spark on k8s环境中，使用jdbc连接需要�
 
 ## 代码说明
 
-### com.njuics.[hive, kafka, neo4j]
+### java
+
+*src* 目录下的Java 代码主要是后端部分代码，包括数据产生、传输、存储和查询的demo，主要有以下几个：
+
+#### com.njuics.[hive, kafka, neo4j]
 
 包含连接hive、Kafka、neo4j他们的client测试。
 
-### Check2Kafka.Java
+#### Check2Kafka.Java
 
 将部分检测产品的记录发送到Kafka队列中，需要提供产品检测文件目录，测试使用的是`data/aaa.txt`
 
-### Kafka2Hive.Java
+#### Kafka2Hive.Java
 
 从Kafka队列中获取数据放入hive数据库中。
 
-### SelectFromHive.Java
+#### SelectFromHive.Java
 
 从hive中执行SQL语句查询信息等。
+
+### mlmodel
+
+*mlmodel*目录下主要是一些数据分析、挖掘的实验代码，包括产品分类、相关性分析等实验，可以参考该目录下的[readme](/mlmodel/README.md)

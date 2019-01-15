@@ -1,11 +1,11 @@
 package com.njuics;
 
 import java.time.Duration;
+import java.util.Date;
+import org.apache.kafka.clients.consumer.*;
 
 import com.njuics.hive.HiveJdbcClient;
 import com.njuics.kafka.Consumer;
-import org.apache.kafka.clients.consumer.*;
-import java.util.Date;
 
 public class Kafka2Hive {
     private static String tablename = "checkeddata";

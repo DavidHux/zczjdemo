@@ -9,9 +9,15 @@ import java.sql.DriverManager;
 public class HiveJdbcClient {
     // private static String driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";
+    private String connectionName = "jdbc:hive2://114.212.189.141:30973/default";
+    private String user = "root";
+    private String pswd = "";
     public Statement stmt;
 
     public HiveJdbcClient() {
+        init();
+    }
+    private void init(){
         try {
             Class.forName(driverName);
         } catch (ClassNotFoundException e) {
@@ -19,12 +25,17 @@ public class HiveJdbcClient {
             System.exit(1);
         }
         try {
-            Connection con = DriverManager.getConnection("jdbc:hive2://114.212.189.141:30973/default", "root", "");
+            Connection con = DriverManager.getConnection(connectionName, user, pswd);
             stmt = con.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    public HiveJdbcClient(String connectionName) {
+        this.connectionName = connectionName;
+        init();
     }
 
     public void execute(String cmd) throws SQLException {
