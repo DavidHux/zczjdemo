@@ -87,20 +87,20 @@ def feature01generate(infilename, outfilename):
                     sales = 600.0
                 else:
                     sales = float(sts[5])
-                    if sales < 2 or sales > 100000:
-                        sales = 600.0
+                    sales = 2 if sales < 2 else sales
+                    sales = 100000 if sales > 100000 else sales
                 if sts[9] == '':
                     yeart = 600.0
                 else:
                     yeart = float(sts[9])
-                    if yeart < 2 or yeart > 100000:
-                        yeart = 600.0
+                    yeart = 2 if yeart < 2 else yeart
+                    yeart = 100000 if yeart > 100000 else yeart
                 if sts[10] == '':
                     workers = 35
                 else:
                     workers = float(sts[10])
-                    if workers < 2 or workers > 5000:
-                        workers = 35
+                    workers = 2 if workers < 2 else workers
+                    workers = 5000 if workers > 5000 else workers
 
                 scale = '2' if sts[7] == '' else sts[7]
                 tyindex = typedict[sts[3]]
@@ -113,8 +113,57 @@ def feature01generate(infilename, outfilename):
                         outfile.write(' 0')
                 outfile.write(' ' + sts[11] + '\n')
 
+def feature4ip():
+    typedict = {}
+    with open('data/lgpc/typeindex.csv') as infile:
+        for line in infile:
+            sts = line.strip().split(',')
+            typedict[sts[0]] = int(sts[1])
+    cou = 0
+    with open('data/lgpc/val.txt', 'w') as outfile:
+        with open('data/industryP.csv') as infile:
+            next(infile)
+            for line in infile:
+                sts = line.strip().split(',')
+                sales = yeart = workers = 0.0
+                if sts[8] == '':
+                    sales = 600.0
+                else:
+                    sales = float(sts[8])
+                    sales = 2 if sales < 2 else sales
+                    sales = 100000 if sales > 100000 else sales
+                if sts[12] == '':
+                    yeart = 600.0
+                else:
+                    yeart = float(sts[12])
+                    yeart = 2 if yeart < 2 else yeart
+                    yeart = 100000 if yeart > 100000 else yeart
+                if sts[13] == '':
+                    workers = 35
+                else:
+                    workers = float(sts[13])
+                    workers = 2 if workers < 2 else workers
+                    workers = 5000 if workers > 5000 else workers
+
+                scale = '2' if sts[10] == '' else sts[10]
+                if sts[3] not in typedict:
+                    tyindex = -1 
+                    cou += 1
+                else:
+                    tyindex = typedict[sts[3]]
+
+                outfile.write(scale + ' ' + str(sales) + ' ' + str(yeart) +' ' + str(workers))
+                for i in range(1160):
+                    if tyindex == i:
+                        outfile.write(' 1')
+                    else:
+                        outfile.write(' 0')
+                outfile.write('\n')
+    print(cou)
+
 countprodtype()
 scale()
 separate()
 feature01generate('data/lgpc/traindata.csv', 'data/lgpc/train.txt')
 feature01generate('data/lgpc/testdata.csv', 'data/lgpc/test.txt')
+feature4ip()
